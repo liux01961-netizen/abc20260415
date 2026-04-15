@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人網頁設計 - 劉香均</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft JhengHei", sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f9;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        /* 導航欄 */
+        header {
+            background-color: #1a2a6c;
+            padding: 1.2rem 10%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { color: white; font-size: 1.3rem; font-weight: bold; }
+
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a { color: #d1d1d1; text-decoration: none; transition: 0.3s; }
+        nav ul li a:hover { color: white; }
+
+        /* 主視覺區 */
+        .hero {
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 60px 10%;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hero-text { max-width: 600px; }
+        .hero-text h1 { color: #1a2a6c; font-size: 2.2rem; margin-bottom: 15px; }
+
+        /* 頭像容器：解決變形關鍵 */
+        .hero-avatar {
+            width: 180px;
+            height: 180px;
+            background: #e1e8ed;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            overflow: hidden; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 關鍵：強制照片填滿並保持比例不變形 */
+            object-position: center;
+        }
+
+        /* 橫向內容板塊 */
+        .main-content { padding: 50px 10%; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 40px; color: #1a2a6c; }
+
+        .horizontal-card {
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .horizontal-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+
+        .card-left {
+            background-color: #1a2a6c;
+            color: white;
+            padding: 30px;
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card-right { padding: 30px; width: 75%; }
+
+        footer {
+            background-color: #1a2a6c;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        strong { color: #1a2a6c; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">個人空間 - 劉香均</div>
+            <ul>
+                <li><a href="#">首頁</a></li>
+                <li><a href="#">自我探索</a></li>
+                <li><a href="#">目標職務</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>劉香均 (靜宜資管)</h1>
+            <p>老師、同學大家好，我是劉香均，來自靜宜大學資管系。我平常除了專研資管的專業課程外，最近也投入了很多心力在學習網頁前端設計。</p>
+            <p>根據我的何倫碼測驗結果，我具備了社會型、事務型與企業型的特質，這讓我更加確定自己未來想往 <strong>MIS 工程師</strong> 的方向發展。我喜歡協調溝通，也喜歡把事情處理得井然有序。</p>
+        </div>
+        <div class="hero-avatar">
+            <img src="{{ url_for('static', filename='headshot.jpg') }}" alt="劉香均個人照片">
+        </div>
+    </section>
+
+    <div class="main-content">
+        <h2 class="section-title">專業探索</h2>
+
+        <div class="horizontal-card">
+            <div class="card-left"><h3>🎯 何倫碼</h3></div>
+            <div class="card-right">
+                <p>經測驗顯示我的性格代碼為：<strong>社會型 (S)、事務型 (C)、企業型 (E)</strong>。這代表我擅長溝通與細節管理。</p>
+            </div>
+        </div>
+
+        <div class="horizontal-card">
+            <div class="card-left"><h3>💼 目標</h3></div>
+            <div class="card-right">
+                <p>未來志向為 <strong>MIS 工程師</strong>，負責企業內部系統維護、網路架構管理與數位化流程優化。</p>
+                <p><strong>工作內容：</strong><br>
+                1. 維護公司電腦設備、網路和資料，進行備份與防毒更新。<br>
+                2. 軟硬體與網路問題排除。<br>
+                3. 電腦設備、資訊系統整合與維護測試。</p>
+            </div>
+        </div>
+
+        <div class="horizontal-card">
+            <div class="card-left"><h3>📝自傳履歷</h3></div>
+            <div class="card-right">
+                <p><strong>【學習背景與技術熱忱】</strong><br>
+
+                    
+                    我目前就讀於靜宜大學資管系。我熱衷於透過資訊技術解決生活問題，從網頁前端設計到資料庫管理皆有涉略。我曾利用 Microsoft Access 開發自動化系統，解決社團行政錯誤，並深入研究企業數位轉型案例。<br>
+
+                    <strong>【性格優勢：精準與協調】</strong><br>
+                
+                    根據 104 何倫碼測驗，我的特質為：社會型 (S)、事務型 (C)、企業型 (E)。<br>
+
+                    社會型：讓我擅長跨部門溝通，能耐心排除同仁的問題。<br>
+
+                    事務型：使我具備高度細心，能嚴謹執行系統備份與設備維護。<br>
+
+                    企業型：賦予我執行力，能主動優化資訊流程。<br>
+
+                    <strong>【目標職務：MIS 工程師】</strong>
+                    我的目標是成為專業的 MIS 工程師。我具備維護電腦設備、網路管理與系統整合的基礎實力，能對應貴公司對穩定資訊環境的要求。我渴望將資管專業轉化為企業穩定的助力，協助部門達成數位化目標。<br>
+            </p>
+            </div>
+        </div>
+
+        <div class="horizontal-card">
+            <div class="card-left"><h3>🚀 未來規劃</h3></div>
+            <div class="card-right">
+                <p><strong>1. 校內修課：</strong>選修「資訊安全管理」與「電腦網路基礎」，鞏固機房與網路維護實力。</p>
+                <p><strong>2. 證照考取：</strong>目標考取 <strong>CCNA</strong> 與 <strong>Linux (LPIC)</strong> 證照，強化硬體管理能力。</p>
+                <p><strong>3. 實務經驗：</strong>爭取擔任社團資訊幹部與企業實習，轉化理論為實戰力。</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 劉香均 | 靜宜大學資訊管理學系</p>
+    </footer>
+
+</body>
+</html>
